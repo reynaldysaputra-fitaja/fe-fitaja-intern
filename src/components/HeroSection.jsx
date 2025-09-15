@@ -9,7 +9,7 @@ export default function HeroSection () {
                 <strong>makanan, minuman, ataupun snack</strong> dari berbagai restoran.
                 <br/>Pengguna juga dapat melihat review dari pengguna lainnya. 
                 Website ini bertujuan untuk memudahkan pengguna yang ingin 
-                <u>mencari referensi makanan</u>.
+                <u> mencari referensi makanan</u>.
             </p>
         </div>
     )
