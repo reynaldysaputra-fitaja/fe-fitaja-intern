@@ -41,7 +41,7 @@ export default function HighlightSection() {
     filter === "all" ? products : products.filter((p) => p.category === filter);
 
   return (
-    <div>
+    <div className='highlight'>
         <CategoryBar onFilter={setFilter} />
 
         <div className='card'>
