@@ -71,12 +71,12 @@ export default function ReviewForm() {
                     <input type="date" id="tanggal" name="date" value={review.date} onChange={handleChange}/><br/>
                 </div>
 
-                <div class="form">
+                <div className="form">
                     <label for="ulasan">Bagaimana ulasanmu?</label><br/>
                     <textarea id="ulasan" name="desc" rows="4" cols="50" value={review.desc} onChange={handleChange}></textarea>
                 </div>
 
-                <div class="form">
+                <div className="form">
                     <label for="foto">Tambahkan foto</label><br/>
                     <input type="file" id="foto" name="image" accept="image/*" onChange={handleChange}/>
                 </div>
