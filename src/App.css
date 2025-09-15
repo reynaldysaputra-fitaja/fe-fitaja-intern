@@ -32,10 +32,11 @@ h1 {
 
 .logo a {
   padding: 15px;
-  font-size: 30px;
-  font-weight: 500;
+  font-size: 40px;
+  font-weight: 600;
   float: left;
   color: var(--secondary-color);
+  text-decoration: none;
 }
 
 .menu {
