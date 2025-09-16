@@ -1,22 +1,32 @@
-import './App.css'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import HeroSection from './components/HeroSection'
-import HighlightSection from './components/HighlightSection'
-import ReviewForm from './components/ReviewForm'
-import SearchBar from './components/SearchBar'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import MateriRoutes from "./router/MateriRoutes";
 
-function App() {
+function HomeNav() {
+  const location = useLocation();
+  if (location.pathname !== "/") return null; // hanya render di halaman "/"
+
   return (
-    <>
-    <Header />
-    <SearchBar />
-    <HeroSection />
-    <HighlightSection />
-    <ReviewForm />
-    <Footer />
-    </>
-  )
+    <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+      <Link to="/materi-02">Materi 02</Link>
+      <Link to="/materi-03">Materi 03</Link>
+    </div>
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <HomeNav />
+
+      <Routes>
+        <Route path="/*" element={<MateriRoutes />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
