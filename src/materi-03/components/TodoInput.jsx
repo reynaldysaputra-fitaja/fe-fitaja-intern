@@ -1,12 +1,20 @@
 import '../App.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TodoList from './TodoList';
 
 export default function TodoInput() {
     const [todo, setTodo] = useState("");
-    const [list, setList] = useState([]);
+    const [list, setList] = useState(() => {
+      const saved = localStorage.getItem("list");
+      return saved ? JSON.parse(saved) : [];
+    });
+    
+    useEffect(() => {
+      localStorage.setItem("list", JSON.stringify(list));
+    }, [list]);
 
-    function handleAdd() { 
+    function handleAdd(e) { 
+      e.preventDefault()
         if (todo !== "") {
             setList([...list, { todo, completed: false, time: new Date().toString()}]);
             setTodo("");
@@ -20,12 +28,14 @@ export default function TodoInput() {
     }
     
   return (
-    <div className='inputTodo'>
-      <input type="text" 
-      value={todo} 
-      onChange={(e) => setTodo(e.target.value)} 
-      placeholder="Add a new todo"/>
-      <button onClick={handleAdd}>Add Todo</button> 
+    <div>
+      <form className='inputTodo'>
+        <input type="text" 
+        value={todo} 
+        onChange={(e) => setTodo(e.target.value)} 
+        placeholder="Add a new todo"/>
+        <button type='submit' onClick={handleAdd}>Add Todo</button> 
+      </form>
       <div>
         <h3>Previous Todos:</h3>
       <hr />
