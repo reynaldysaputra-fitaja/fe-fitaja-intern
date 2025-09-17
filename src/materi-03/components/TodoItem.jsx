@@ -6,6 +6,7 @@ export default function TodoItem({todo, onToggle}) {
         type="checkbox"
         checked={todo.completed}
         onClick={onToggle}
+        readOnly
         />
         <span style={{ textDecoration: todo.completed ? "line-through" : "none"}}>
           {todo.todo} <small>- {todo.time}</small>
