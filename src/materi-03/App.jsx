@@ -1,9 +1,11 @@
-import React from "react";
+import './App.css';
+import TodoInput from "./components/TodoInput";
 
 function Materi03() {
   return (
-    <div>
-      <h3>Materi 03</h3>
+    <div className="page">
+      <h1>Todos</h1>
+      <TodoInput />
     </div>
   );
 }

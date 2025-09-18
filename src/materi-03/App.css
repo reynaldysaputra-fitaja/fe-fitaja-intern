@@ -1,0 +1,46 @@
+:root {
+    --primary-color: white;
+    --secondary-color: black;
+    --text-color: grey;
+
+}
+
+.page {
+    margin-inline: 350px;
+}
+
+.inputTodo input {
+    background-color: var(--primary-color);
+    padding: 8px;
+    width: 400px;
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
+}
+
+.inputTodo button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.todoList input {
+    width: auto;
+}
+
+.todoList span {
+    padding: 10px;
+}
+
+.time {
+    color: var(--text-color);
+    font-size: small;
+}
