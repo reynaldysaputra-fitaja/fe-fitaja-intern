@@ -15,6 +15,7 @@ function HomeNav() {
     <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
       <Link to="/materi-02">Materi 02</Link>
       <Link to="/materi-03">Materi 03</Link>
+      <Link to="/materi-04">Materi 04</Link>
     </div>
   );
 }
