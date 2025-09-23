@@ -70,12 +70,22 @@ input {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 15px;
 }
 
 .cat-bar button {
-    align-items: center;
-    margin-top: 20px;
-    margin-right: 10px;
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    background: var(--primary-color);
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.cat-bar button.active {
+    background: #007bff;
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
 li {
