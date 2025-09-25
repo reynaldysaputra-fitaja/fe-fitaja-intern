@@ -16,6 +16,7 @@ function HomeNav() {
       <Link to="/materi-02">Materi 02</Link>
       <Link to="/materi-03">Materi 03</Link>
       <Link to="/materi-04">Materi 04</Link>
+      <Link to="/materi-05">Materi 05</Link>
     </div>
   );
 }
