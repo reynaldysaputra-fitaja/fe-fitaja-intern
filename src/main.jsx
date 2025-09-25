@@ -2,15 +2,17 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react";
-import { store, persistor } from "/src/materi-04/components/store.js"
+// import { persistor } from "/src/materi-04/components/store.js"
+import { store } from "/src/materi-05/components/store.js"
 import App from "./App";
+import "./index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      {/* <PersistGate loading={null} persistor={persistor}> */}
         <App />
-      </PersistGate>
+      {/* </PersistGate> */}
     </Provider>
   </StrictMode>
 );
