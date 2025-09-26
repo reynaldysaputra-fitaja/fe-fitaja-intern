@@ -50,11 +50,31 @@ const appSlice = createSlice({
             image: "https://static1.xdaimages.com/wordpress/wp-content/uploads/2022/12/05_x1_carbon_g11_hero_front_facing_right.png"
         }
     ],
+    form: {
+      brand: "",
+      name: "",
+      desc: "",
+      rating: "",
+      review: "",
+      image: "",
+    },
     search: ""
   },
   reducers: {
+    setFormValue: (state, action) => {
+      const { field, value } = action.payload;
+      state.form[field] = value;
+    },
     setSearch: (state, action) => {
       state.search = action.payload
+    },
+    addProduct: (state) => {
+      const newId = state.products.length + 1;
+      state.products.push({
+        id: newId,
+        ...state.form,
+      });
+      state.form = { brand: "", name: "", desc: "", rating: "", review: "", image: "" };
     },
     deleteProduct: (state, action) => {
       state.products = state.products.filter((p) => p.id !== action.payload)
@@ -62,5 +82,5 @@ const appSlice = createSlice({
   }
 })
 
-export const { setSearch, deleteProduct } = appSlice.actions
+export const { setFormValue, setSearch, addProduct, deleteProduct } = appSlice.actions
 export default appSlice.reducer
