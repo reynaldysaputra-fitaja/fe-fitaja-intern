@@ -1,7 +1,6 @@
 import { FaTrash } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { deleteProduct } from "./appSlice";
-import { useDispatch } from "react-redux";
 import { useState } from "react";
 
 function Item({ id, brand, name, desc, rating, review, image}) {
@@ -9,7 +8,7 @@ function Item({ id, brand, name, desc, rating, review, image}) {
   const [showReview, setShowReview] = useState(false);
 
   return (
-    <div className="w-90 md:w-200 lg:w-290 px-8 m-5 md:m-8 lg:m-10 mx-auto shadow-lg rounded-4xl md:flex md:flex-row ">
+    <div className="w-90 md:w-200 lg:w-270 px-8 m-5 md:m-8 lg:m-10 mx-auto md:mx-auto lg:mx-auto shadow-lg rounded-4xl md:flex md:flex-row ">
       <span className="text-base flex-start rounded-xl text-gray-800 font-bold">0{id}</span>
       <div className="flex flex-row justify-center items-center ml-10 ">
         <span className="block md:hidden text-[#18A661] pr-10 font-bold text-3xl">{rating}</span>
