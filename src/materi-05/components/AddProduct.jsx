@@ -1,20 +1,23 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { closeForm } from "./uiSlice"
-import { setFormValue, addProduct } from "./appSlice";
+import { closeForm } from "../state/uiSlice"
+import { resetForm, setFormValue } from "../state/appSlice";
+import { useAddPostMutation } from "../state/api"
 
 export default function AddProduct() {
   const dispatch = useDispatch()
   const { form } = useSelector((state) => state.app);
   const [showPopup, setShowPopup] = useState(false)
+  const [addProduct] = useAddPostMutation()
 
   const handleChange = (e) => {
     dispatch(setFormValue({ field: e.target.name, value: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
       e.preventDefault()
-      dispatch(addProduct({form}))
+      await addProduct(form).unwrap();
+      dispatch(resetForm())
       setShowPopup(true)
   }
 
@@ -28,6 +31,7 @@ export default function AddProduct() {
           onChange={handleChange}
           placeholder="Brand"
           className="border rounded px-3 py-2"
+          required
         />
         <input
           type="text"
@@ -36,13 +40,15 @@ export default function AddProduct() {
           onChange={handleChange}
           placeholder="Name"
           className="border rounded px-3 py-2"
+          required
         />
         <textarea
-          name="desc"
-          value={form.desc}
+          name="description"
+          value={form.description}
           onChange={handleChange}
           placeholder="Description"
           className="border rounded px-3 py-2"
+          required
         />
         <input
           type="number"
@@ -62,22 +68,22 @@ export default function AddProduct() {
         />
         <input
           type="text"
-          name="image"
-          value={form.image}
+          name="image_link"
+          value={form.image_link}
           onChange={handleChange}
           placeholder="Image Link"
           className="border rounded px-3 py-2"
           />
         <button
           type="submit"
-          className="bg-[#18A661] text-white px-4 py-2 rounded"
+          className="bg-[#18A661] hover:bg-green-800 text-white px-4 py-2 rounded"
         >
           Add Product
         </button>
         <button
           type="button" 
           onClick={() => dispatch(closeForm())}
-          className="bg-[#18A661] text-white px-4 py-2 rounded"
+          className="bg-[#18A661] hover:bg-green-800 text-white px-4 py-2 rounded"
         >
           Cancel
         </button>
@@ -87,7 +93,7 @@ export default function AddProduct() {
             <div className="bg-white max-w-md rounded-xl text-center">
               <h3 className="m-5">Product added successfully!</h3>
               <img className="w-50 m-5" src="https://cdn-icons-png.flaticon.com/512/7518/7518748.png"/> <br/>
-              <button className="w-30 h-8 bg-[#18A661] rounded-2xl mb-5 text-white font-bold" onClick={() => dispatch(closeForm())}>Home</button>
+              <button className="w-30 h-8 bg-[#18A661] hover:bg-green-800 rounded-2xl mb-5 text-white font-bold" onClick={() => dispatch(closeForm())}>Home</button>
             </div>
           </div>
         )}
