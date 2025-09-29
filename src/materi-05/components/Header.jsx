@@ -1,4 +1,4 @@
-import { useGetPostsQuery } from "../state/api";
+import { useGetPostsQuery } from "../service/api";
 import Skeleton from "./Skeleton";
 
 export default function Header() {

@@ -2,7 +2,7 @@ import { FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct } from "../state/appSlice";
 import { useState } from "react";
-import { useGetPostsQuery } from "../state/api"
+import { useGetPostsQuery } from "../service/api"
 import Skeleton from "./Skeleton";
 
 function getRatingColor({rating}) {

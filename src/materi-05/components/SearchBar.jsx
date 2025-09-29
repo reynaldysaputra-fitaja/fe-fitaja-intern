@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { setSearch } from "../state/appSlice"
 import { useState } from "react"
 import { openForm } from "../state/uiSlice"
-import { useGetPostsQuery } from "../state/api"
+import { useGetPostsQuery } from "../service/api"
 import Skeleton from "./Skeleton"
 
 function SearchBar() {

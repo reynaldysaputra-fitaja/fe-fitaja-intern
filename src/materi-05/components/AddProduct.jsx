@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { closeForm } from "../state/uiSlice"
 import { resetForm, setFormValue } from "../state/appSlice";
-import { useAddPostMutation } from "../state/api"
+import { useAddPostMutation } from "../service/api"
 
 export default function AddProduct() {
   const dispatch = useDispatch()
