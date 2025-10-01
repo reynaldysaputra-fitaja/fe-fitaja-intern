@@ -8,15 +8,15 @@ export default function AddProduct({ id }) {
   const dispatch = useDispatch()
   const { form, mode } = useSelector((state) => state.app);
   const [showPopup, setShowPopup] = useState(false)
-  const [addProduct, { isLoading: add }] = useAddPostMutation()
-  const [editProduct, { isLoading: edit }] = useEditProductMutation()
+  const [addProduct, { isLoading: isLoadingAdd }] = useAddPostMutation()
+  const [editProduct, { isLoading: isLoadingedit }] = useEditProductMutation()
 
   const { data } = useGetProductByIdQuery(id, {
     skip: mode !== "edit",
   });
 
   useEffect(() => {
-    if (data && mode === "edit") {
+    if (mode === "edit") {
       dispatch(setFormValue(data));
     }
   }, [data, mode, dispatch]);
@@ -113,12 +113,12 @@ export default function AddProduct({ id }) {
           Cancel
         </button>
       </form>
-      {add && (
+      {isLoadingAdd && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center rounded-xl">
           <img className="w-15 md:w-30 mx-auto" src="https://i.gifer.com/ZKZg.gif"/>
         </div>
       )}
-      {edit && (
+      {isLoadingedit && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center rounded-xl">
           <img className="w-15 md:w-30 mx-auto" src="https://i.gifer.com/ZKZg.gif"/>
         </div>
