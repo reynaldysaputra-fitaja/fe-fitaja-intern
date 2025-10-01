@@ -31,9 +31,6 @@ const appSlice = createSlice({
     setSearch: (state, action) => {
       state.search = action.payload
     },
-    deleteProduct: (state, action) => {
-      state.products = state.products.filter((p) => p.id !== action.payload)
-    },
     openForm: (state, action) => {
       state.showAddForm = true;
       state.mode = action.payload?.mode || 'add';
@@ -57,5 +54,5 @@ const appSlice = createSlice({
   }
 })
 
-export const { setFormValue, resetForm, setSearch, addProduct, deleteProduct, openForm, closeForm, setShowPopup } = appSlice.actions
+export const { setFormValue, resetForm, setSearch, addProduct, openForm, closeForm, setShowPopup } = appSlice.actions
 export default appSlice.reducer
