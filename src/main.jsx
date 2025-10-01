@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react";
 // import { persistor } from "/src/materi-04/components/store.js"
-import { store } from "/src/materi-05/components/store.js"
+import { store } from "/src/materi-05/state/store.js"
 import App from "./App";
 import "./index.css";
 
