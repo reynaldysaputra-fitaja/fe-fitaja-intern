@@ -11,7 +11,9 @@ const appSlice = createSlice({
       review: "",
       image_link: "",
     },
-    search: ""
+    search: "",
+    showAddForm: false,
+    showPopup: false
   },
   reducers: {
     setFormValue: (state, action) => {
@@ -29,11 +31,28 @@ const appSlice = createSlice({
     setSearch: (state, action) => {
       state.search = action.payload
     },
-    deleteProduct: (state, action) => {
-      state.products = state.products.filter((p) => p.id !== action.payload)
+    openForm: (state, action) => {
+      state.showAddForm = true;
+      state.mode = action.payload?.mode || 'add';
+      state.form = action.payload?.data || {
+        brand: "",
+        name: "",
+        description: "",
+        rating: "",
+        review: "",
+        image_link: ""
+      };
+    },
+    closeForm: (state) => {
+      state.showAddForm = false;
+      state.form = {};
+      state.mode = 'add';
+    },
+    setShowPopup: (state, action) => {
+      state.showPopup = action.payload;
     }
   }
 })
 
-export const { setFormValue, resetForm, setSearch, addProduct, deleteProduct } = appSlice.actions
+export const { setFormValue, resetForm, setSearch, addProduct, openForm, closeForm, setShowPopup } = appSlice.actions
 export default appSlice.reducer

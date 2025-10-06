@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 import AddProduct from "./components/AddProduct"
 
 function Materi05() {
-  const showForm = useSelector(state => state.ui.showAddForm)
+  const showForm = useSelector(state => state.app.showAddForm)
 
   return (
     <div className="bg-white font-sans">
