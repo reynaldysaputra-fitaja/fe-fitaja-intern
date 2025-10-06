@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { closeForm } from "../state/appSlice"
+import { closeForm, openForm } from "../state/appSlice"
 import { resetForm, setFormValue } from "../state/appSlice";
 import { useAddPostMutation, useEditProductMutation, useGetProductByIdQuery } from "../service/api"
 
@@ -16,8 +16,8 @@ export default function AddProduct({ id }) {
   });
 
   useEffect(() => {
-    if (mode === "edit") {
-      dispatch(setFormValue(data));
+    if (mode === "edit" && data) {
+      dispatch(openForm({ mode: "edit", data }));
     }
   }, [data, mode, dispatch]);
 

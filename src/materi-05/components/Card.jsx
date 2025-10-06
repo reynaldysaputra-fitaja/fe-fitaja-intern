@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDeleteProductMutation, useGetPostsQuery } from "../service/api"
 import Skeleton from "./Skeleton";
 import { openForm } from "../state/appSlice";
+import { useNavigate } from "react-router-dom";
 
 function getRatingColor({rating}) {
   if (rating <= 4) return "text-red-500";
@@ -13,9 +14,9 @@ function getRatingColor({rating}) {
 
 function Item({ id, brand, name, description, rating, review, image_link}) {
   const dispatch= useDispatch()
-  const [showReview, setShowReview] = useState(false);
   const [deleteProduct, {isLoading}] = useDeleteProductMutation()
   const [showPopup, setShowPopup] = useState(false)
+  const navigate = useNavigate();
 
   const handleEdit = () => {
     const product = { id, brand, name, description, rating, review, image_link };
@@ -24,7 +25,7 @@ function Item({ id, brand, name, description, rating, review, image_link}) {
 
   const handleDelete = async () => { 
     setShowPopup(false)
-    dispatch(deleteProduct(id))
+    await deleteProduct(id)
   };
 
   return (
@@ -41,9 +42,6 @@ function Item({ id, brand, name, description, rating, review, image_link}) {
           <span className="font-bold text-gray-800">{brand} - {name}</span>
           <p className="line-clamp-2 md:line-clamp-2 lg:line-clamp-none text-gray-700">{description}</p>
         </div>
-        {showReview && (
-          <p className="my-2 text-gray-600 italic md:px-5">{review}</p>
-        )}
       </div>
       <div className="flex gap-5 md:gap-0 lg:gap-0 mx-3 md:grid lg:grid justify-center ">
         <div className="hidden md:block font-bold text-3xl md:text-2xl md:flex md:text-center md:justify-center nd:items-center">
@@ -52,8 +50,7 @@ function Item({ id, brand, name, description, rating, review, image_link}) {
           </span>
         </div>
         <button className="w-50 h-8 md:w-30 bg-[#18A661] hover:bg-green-800 rounded-2xl my-3 md:my-1 text-white font-bold" 
-          onClick={() => setShowReview(!showReview)}>
-          {showReview ? "Hide Info" : "More Info"}
+          onClick={() => navigate(`/materi-05/${id}`)}>More Info
         </button>
         <div className="flex md:flex-row md:justify-center md:m-3 gap-5 md:gap-7">
           <button onClick={handleEdit}>
