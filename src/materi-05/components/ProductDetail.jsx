@@ -13,8 +13,6 @@ export default function ProductDetail() {
       isLoading,
     }),
   });
-
-  const rating = product.rating;
   
   if (isLoading) {
     return (
@@ -51,9 +49,7 @@ export default function ProductDetail() {
       </ul>
       <div className="bg-gray-200 rounded-2xl shadow-lg p-6 my-3">
         <div className="flex flex-row justify-between mb-3 ">
-          <span className="flex">{[...Array(5)].map((_, i) => (
-            <FaStar key={i} color={i < Math.round(rating/2) ? "gold" : "lightgray"} />))}
-          </span>
+          <span><FaStar className="text-yellow-500 text-md"/></span>
           <div className="flex gap-2">
             <button><FaArrowCircleLeft/></button>
             <button><FaArrowCircleRight/></button>
