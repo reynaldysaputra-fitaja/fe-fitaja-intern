@@ -1,24 +1,40 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetPostsQuery } from "../service/api";
 import { FaArrowCircleLeft, FaArrowCircleRight, FaArrowLeft, FaCheck, FaStar } from "react-icons/fa";
+import PageNotFound from "./PageNotFound";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data: product } = useGetPostsQuery(undefined, {
-    selectFromResult: ({ data }) => ({
+  const { data: product, isLoading } = useGetPostsQuery(undefined, {
+    selectFromResult: ({ data, isLoading }) => ({
       data: data?.find((p) => p.id.toString() === id),
+      isLoading,
     }),
   });
+  
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-100">
+        <img
+          src="https://i.gifer.com/ZKZg.gif"
+          alt="Loading"
+          className="w-25 h-25"
+        />
+      </div>
+    );
+  }
 
-  const descriptionPoints = product.description.split(".").map((point) => point.trim()).filter((point) => point.length > 0);
+  const descriptionPoints = product?.description.split(".").map((point) => point.trim()).filter((point) => point.length > 0);
 
-  if (!product) return <p>Product not found</p>;
+  if (!product) return <PageNotFound />;
+
+  const rating = product.rating;
 
   return (
     <div className="flex flex-col gap-2 mx-25 my-10">
-      <button onClick={() => navigate(-1)} ><FaArrowLeft/></button>
+      <button onClick={() => navigate(`/materi-05`)} ><FaArrowLeft/></button>
       <div className="w-10 bg-yellow-500 text-white font-bold rounded-xl text-center mt-3 lg:">0{product.id}</div>
       <div className="md:flex md:flex-row-reverse md:justify-end md:mt-5">
         <img src={product.image_link} alt={product.name} className="w-64 my-4 mx-auto lg:mr-5 rounded-2xl" />
@@ -35,7 +51,9 @@ export default function ProductDetail() {
       </ul>
       <div className="bg-gray-200 rounded-2xl shadow-lg p-6 my-3">
         <div className="flex flex-row justify-between mb-3 ">
-          <span><FaStar className="text-yellow-500 text-md"/></span>
+          <span className="flex">{[...Array(5)].map((_, i) => (
+            <FaStar key={i} color={i < Math.round(rating/2) ? "gold" : "lightgray"} />))}
+          </span>
           <div className="flex gap-2">
             <button><FaArrowCircleLeft/></button>
             <button><FaArrowCircleRight/></button>
