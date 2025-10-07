@@ -30,6 +30,8 @@ export default function ProductDetail() {
 
   if (!product) return <PageNotFound />;
 
+  const rating = product.rating;
+
   return (
     <div className="flex flex-col gap-2 mx-25 my-10">
       <button onClick={() => navigate(`/materi-05`)} ><FaArrowLeft/></button>
@@ -49,7 +51,9 @@ export default function ProductDetail() {
       </ul>
       <div className="bg-gray-200 rounded-2xl shadow-lg p-6 my-3">
         <div className="flex flex-row justify-between mb-3 ">
-          <span><FaStar className="text-yellow-500 text-md"/></span>
+          <span className="flex">{[...Array(5)].map((_, i) => (
+            <FaStar key={i} color={i < Math.round(rating/2) ? "gold" : "lightgray"} />))}
+          </span>
           <div className="flex gap-2">
             <button><FaArrowCircleLeft/></button>
             <button><FaArrowCircleRight/></button>
