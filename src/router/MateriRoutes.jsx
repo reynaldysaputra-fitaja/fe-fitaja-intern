@@ -4,6 +4,7 @@ import Materi03 from "../materi-03/App";
 import Materi04 from "../materi-04/App";
 import Materi05 from "../materi-05/App";
 import ProductDetail from "../materi-05/components/ProductDetail";
+import Materi06 from "../materi-06/App";
 
 // Lazy import tiap materi
 const Materi02 = lazy(() => import("../materi-02/App"));
@@ -17,6 +18,7 @@ export default function MateriRoutes() {
         <Route path="/materi-04" element={<Materi04 />} />
         <Route path="/materi-05" element={<Materi05 />} />
         <Route path="/materi-05/:id" element={<ProductDetail />} />
+        <Route path="/materi-06/*" element={<Materi06 />} />
       </Routes>
     </Suspense>
   );
