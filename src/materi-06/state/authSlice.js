@@ -30,6 +30,11 @@ const authSlice = createSlice ({
             );
             state.isLogin = !user;
         },
+        logout: (state) => {
+            state.isLogin = false;
+            state.email = "";
+            state.password = "";       
+        },
         clearMessages: (state) => {
             state.email = "";
             state.password = "";
@@ -37,5 +42,5 @@ const authSlice = createSlice ({
     }
 });
 
-export const { setEmail, setPassword, register, login, clearMessages } = authSlice.actions;
+export const { setEmail, setPassword, register, login, logout, clearMessages } = authSlice.actions;
 export default authSlice.reducer;

@@ -35,6 +35,9 @@ const AuthForm = ({ mode }) => {
       }, 1500);
     } else {
       dispatch(login({ email, password }));
+      console.log("Email: ", email);
+      console.log("Password :", password);
+      setIsLoading(true);
       setTimeout(() => {
         navigate("/materi-06/home");
         dispatch(clearMessages());
@@ -51,12 +54,12 @@ const AuthForm = ({ mode }) => {
   }, []);
 
   return (
-        <div className=" auth-form md:flex md:flex-row ">
-        <img src={bgdesktopImg} className="hidden md:block md:w-1/2 md:h-147 items-center justify-center"/>
-        <img src={bgmobileImg} className="block md:hidden justify-center"/>
+        <div className=" auth-form lg:flex lg:flex-row h-[100vh]">
+        <img src={bgdesktopImg} className="hidden lg:block lg:w-1/2 lg:h-full items-center justify-center"/>
+        <img src={bgmobileImg} className="block lg:hidden md:w-full justify-center"/>
         
-        <div className="flex flex-col w-full md:w-1/2 items-center justify-center bg-white rounded-3xl p-10 md:m-3">
-        <img className="w-10 md:w-15 m-2 mt-0" src={logoImg}></img>
+        <div className="flex flex-col w-full lg:w-1/2 items-center justify-center bg-white rounded-3xl">
+        <img className="w-10 md:w-15 m-2" src={logoImg}></img>
         <h2 className="text-2xl font-bold">
             {isRegister ? "Welcome" : "Welcome Back"}
         </h2>
@@ -157,14 +160,24 @@ const AuthForm = ({ mode }) => {
             </button>
         </form>
 
+        {isRegister ?  (<div className="m-5">Already have an account? 
+        <span className="font-semibold text-green-500"
+        onClick={() => navigate("/materi-06/login")}> Login here</span></div>) 
+        : (<div className="m-5">Don't have an account? 
+          <span className="font-semibold text-green-500" 
+          onClick={() => navigate("/materi-06/register")}> Register here</span></div>)}
+
         {error && <p className="text-red-500 mt-3">{error}</p>}
         {success && <p className="text-green-600 mt-3">{success}</p>}
         </div>
+
         {isLoading && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center rounded-xl">
-          <img className="w-15 md:w-30 mx-auto" src="https://i.gifer.com/ZKZg.gif"/>
+          <img className="w-15 md:w-20 mx-auto" src="https://i.gifer.com/ZKZg.gif"/>
         </div>
-      )}
+        )}
+
+        
     </div>
   );
 };
