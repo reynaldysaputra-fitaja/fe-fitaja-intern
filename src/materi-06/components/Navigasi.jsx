@@ -45,11 +45,21 @@ export default function Navigasi() {
             </ul>
         </div>
         </div>
-        <div className="flex flex-row gap-3 lg:gap-7 items-center mx-5 text-xl lg:text-2xl">
+        <div className="flex flex-row gap-3 lg:gap-7 items-center mx-5 text-2xl">
+          <div className="relative">
             <FaCartArrowDown />
+            <span className="absolute -top-2 -right-2 bg-[#59F151] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+              0
+            </span>
+          </div>
+          <div className="relative">
             <AiOutlineHeart />
+            <span className="absolute -top-2 -right-2 bg-[#59F151] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+              0
+            </span>
+          </div>
             {isLogin ? 
-            (<button className="text-2xl lg:text-3xl font-semibold mr-2"
+            (<button className="text-3xl font-semibold mr-2"
             onClick={() => setProfile((prev) => !prev)}>
                 {user?.email || <AiOutlineUser/>}
             </button>
