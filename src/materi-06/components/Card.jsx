@@ -12,15 +12,20 @@ import rinGreyTosca from "../assets/rin-Grey-Tosca.jpg"
 import cutSilver from "../assets/cut-Silver.jpg"
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { AiOutlineHeart } from "react-icons/ai";
 
 function Item({ products }) {
-
-  const handleClick = () => {
-    console.log("Product:", products);
-  };
+  const navigate = useNavigate();
+  const handleClick =
+    () => {navigate(`/materi-06/product/${products.id}`, { state: products });
+    window.scrollTo(0, 0);
+  }
+  
 
   return (
-    <div className="flex flex-col mb-5 shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300" onClick={handleClick}>
+    <div className="flex flex-col p-10 hover:shadow-xl hover:-translate-y-2 transition duration-300 cursor-pointer" 
+      onClick={handleClick}>
       {products.discount > 0 && (
         <div className="absolute bg-red-500 text-white font-bold text-xs px-2 py-4 rounded-full self-end mb-2">
           -{products.discount}%
@@ -34,7 +39,10 @@ function Item({ products }) {
       />
 
       <span className="text-base font-bold mb-1">{products.category}</span>
+      <div className="flex flex-row justify-between">
       <span className="text-sm mb-2">{products.name}</span>
+      <AiOutlineHeart className="text-xl"/>
+      </div>
 
       {products.discount > 0 ? (
         <div className="flex justify-between gap-3">
@@ -53,7 +61,7 @@ export default function Card({limit, showSearch = false}) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1500); // 1.5 detik
+    const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -66,6 +74,11 @@ export default function Card({limit, showSearch = false}) {
       price: "Rp 119.800",
       discount: 50,
       discountprice: "Rp 59.900",
+      desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 4.5,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
     },
     {
       id: 2,
@@ -75,6 +88,9 @@ export default function Card({limit, showSearch = false}) {
       price: "Rp 299.800",
       discount: 50,
       discountprice: "Rp 149.900",
+      desc: "Cozy fleece hoodie designed to keep you warm and comfortable. Perfect for lounging or outdoor activities.",
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
     },
     {
       id: 3,
@@ -84,6 +100,9 @@ export default function Card({limit, showSearch = false}) {
       price: "Rp 119.800",
       discount: 0,
       discountprice: null,
+      desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
     },
     {
       id: 4,
@@ -93,6 +112,9 @@ export default function Card({limit, showSearch = false}) {
       price: "Rp 259.800",
       discount: 50,
       discountprice: "Rp 129.900",
+      desc: "Classic crewneck sweatshirt made from thick, soft cotton for a warm and comfy feel. Regular fit that’s great for everyday wear.",
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
     },
     {
       id: 5,
@@ -101,7 +123,10 @@ export default function Card({limit, showSearch = false}) {
       name: "Streetwear Skate Black",
       price: "Rp 119.800",
       discount: 50,
-      discountprice: "Rp 59.900"
+      discountprice: "Rp 59.900",
+      desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
     },
     {
       id: 6,
@@ -110,7 +135,11 @@ export default function Card({limit, showSearch = false}) {
       name: "Font Urban Black",
       price: "Rp 119.800",
       discount: 50,
-      discountprice: "Rp 59.900"    
+      discountprice: "Rp 59.900",
+      desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
+      sizes: ["S", "M", "L", "XL", "XXL"]  ,
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
+
     },
     {
       id: 7,
@@ -119,7 +148,11 @@ export default function Card({limit, showSearch = false}) {
       name: "Lokko Black",
       price: "Rp 119.800",
       discount: 50,
-      discountprice: "Rp 59.900" 
+      discountprice: "Rp 59.900",
+      desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
+      sizes: ["S", "M", "L", "XL", "XXL"] ,
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
+
     },
     {
       id: 8,
@@ -128,7 +161,11 @@ export default function Card({limit, showSearch = false}) {
       name: "Yunani Angel Black",
       price: "Rp 119.800",
       discount: 50,
-      discountprice: "Rp 59.900"
+      discountprice: "Rp 59.900",
+      desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
+
     },
     {
       id: 9,
@@ -137,7 +174,11 @@ export default function Card({limit, showSearch = false}) {
       name: "Alexander Black",
       price: "Rp 279.800",
       discount: 50,
-      discountprice: "Rp 139.900"
+      discountprice: "Rp 139.900",
+      desc: "Cozy fleece hoodie designed to keep you warm and comfortable. Perfect for lounging or outdoor activities.",
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
+
     },
     {
       id: 10,
@@ -146,7 +187,10 @@ export default function Card({limit, showSearch = false}) {
       name: "Natural Green",
       price: "Rp 259.800",
       discount: 0,
-      discountprice: null
+      discountprice: null,
+      desc: "Guaranteed not to be damaged easily because it is produced with the latest Shoes Injection Mold technology.",
+      sizes: [37, 38, 39, 40, 41, 42, 43, 44],
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
     },
     {
       id: 11,
@@ -155,16 +199,23 @@ export default function Card({limit, showSearch = false}) {
       name: "Grey Tosca",
       price: "Rp 259.800",
       discount: 0,
-      discountprice: null
+      discountprice: null,
+      desc: "Guaranteed not to be damaged easily because it is produced with the latest Shoes Injection Mold technology.",
+      sizes: [37, 38, 39, 40, 41, 42, 43, 44],
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
     },
     {
       id: 12,
       image: cutSilver,
-      category: "Space High",
+      category: "SPACE HIGH",
       name: "Cut Silver",
       price: "Rp 259.800",
       discount: 0,
-      discountprice: null
+      discountprice: null,
+      desc: "Guaranteed not to be damaged easily because it is produced with the latest Shoes Injection Mold technology.",
+      sizes: [37, 38, 39, 40, 41, 42, 43, 44],
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
+
     }
   ];
 
