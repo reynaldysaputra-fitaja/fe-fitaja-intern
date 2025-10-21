@@ -15,12 +15,12 @@ export default function DetailProduct({addToCart}) {
   const handleAdd = () => {
     addToCart(products, selectedSize);
     setShowPopupAdd(true);
-    setTimeout(() => {setShowPopupAdd(false);}, 1000);
+    setTimeout(() => {setShowPopupAdd(false);}, 2000);
   }
 
   const handleSave = () => {
     setShowPopupSave(true);
-    setTimeout(() => {setShowPopupSave(false);}, 1000);
+    setTimeout(() => {setShowPopupSave(false);}, 2000);
   }
 
   useEffect(() => {
@@ -65,18 +65,18 @@ export default function DetailProduct({addToCart}) {
             <button className="cursor-pointer"><FaInstagram/></button>
           </div>
           {showPopupAdd && (
-            <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-              <div className="bg-white max-w-md rounded-xl text-center">
+            <div className="fixed inset-0 flex items-center justify-center">
+              <div className="bg-gray-500/50 max-w-md rounded-xl text-center text-white">
+                <FaCheckCircle className=" text-3xl m-auto mt-10"/>
                 <h3 className="m-5">Product added to cart!</h3>
-                <img className="w-40 m-5 m-auto" src="https://cdn-icons-png.flaticon.com/512/7518/7518748.png"/> <br/>
               </div>
             </div>
           )}
           {showPopupSave && (
-            <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-              <div className="bg-white max-w-md rounded-xl text-center">
+            <div className="fixed inset-0 flex items-center justify-center">
+              <div className="bg-gray-500/50 max-w-md rounded-xl text-center text-white">
+                <FaCheckCircle className=" text-3xl m-auto mt-10"/>
                 <h3 className="m-5">Product saved successfully!</h3>
-                <img className="w-40 m-5 m-auto" src="https://cdn-icons-png.flaticon.com/512/7518/7518748.png"/> <br/>
               </div>
             </div>
           )}
