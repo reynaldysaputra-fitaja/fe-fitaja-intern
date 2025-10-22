@@ -1,11 +1,16 @@
 import { FaCheckCircle, FaFacebookF, FaInstagram, FaStar, FaTwitter } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import Card from "./Card";
+import Navigasi from "./Navigasi"
+import Footer from "./Footer"
 import { useState } from "react";
 import { useEffect } from "react";
 import { animate, easeInOut, stagger } from "motion/react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../state/cartSlice";
 
-export default function DetailProduct({addToCart}) {
+export default function DetailProduct() {
+  const dispatch = useDispatch();
   const location = useLocation();
   const products = location.state;
   const [showPopupAdd, setShowPopupAdd] = useState(false);
@@ -13,8 +18,16 @@ export default function DetailProduct({addToCart}) {
   const [selectedSize, setSelectedSize] = useState();
 
   const handleAdd = () => {
-    addToCart(products, selectedSize);
-    setShowPopupAdd(true);
+    if (!selectedSize) {
+      alert("Please select a size first!");
+      return;
+    }
+    if(!selectedSize) {
+      setShowPopupAdd(false);
+    } else {
+      setShowPopupAdd(true);
+    }
+    dispatch(addToCart({...products, size:selectedSize}));
     setTimeout(() => {setShowPopupAdd(false);}, 2000);
   }
 
@@ -33,24 +46,32 @@ export default function DetailProduct({addToCart}) {
 
   return (
   <div className="animasi">
+    <Navigasi/>
     <div className="mx-10 lg:mx-15 my-10">
       <div className="flex flex-col md:flex-row gap-3 md:gap-10 lg:gap-30">
         <img className="w-50 md:w-90 lg:w-120 mx-auto hover:shadow-xl hover:-translate-y-2 transition duration-300" src={products.image}></img>
         <div className="flex flex-col">
           <span className="text-md md:text-base lg:text-xl font-bold">{products.category}</span>
           <span className="text-sm md:text-md lg:text-base">{products.name}</span>
-          <span className="text-sm md:text-md lg:text-base font-bold">{products.price}</span>
+          {products.discount > 0 ? (
+            <div className="flex gap-3">
+              <span className="line-through">{products.price}</span>
+              <span className="text-red-500 font-bold">{products.discountprice}</span>
+            </div>
+          ) : (
+            <span className="text-black">{products.price}</span>
+          )}
           <p className="text-sm md:text-md lg:text-base my-5">{products.desc}</p>
           <span className="text-sm md:text-md lg:text-base font-bold">Size</span>
           <div className="flex gap-2 mt-3">
-            {products.sizes.map((sizes) => (
+            {products.sizes.map((size) => (
               <button
-              key={sizes}
-              onClick={() => setSelectedSize(sizes)}
+              key={size}
+              onClick={() => setSelectedSize(size)}
               className={`cursor-pointer border border-gray-500 px-3 py-1 hover:bg-[#59F151]
-                ${ selectedSize === sizes ? "bg-[#59F151]" : "" }`}
+                ${ selectedSize === size ? "bg-[#59F151]" : "" }`}
               >
-                {sizes}
+                {size}
               </button>
             ))}
           </div>
@@ -97,19 +118,24 @@ export default function DetailProduct({addToCart}) {
       <hr className="w-3/4 my-10"/>
       <div className="flex flex-row items-center justify-between mb-3">
         <span className="text-base md:text-xl font-bold">REVIEW</span>
-        <span className="flex items-center gap-2 text-xs md:text-base"><FaStar className="text-yellow-500"/>({products.rating}/5)</span>
+        <span className="flex items-center gap-2 text-xs md:text-base">
+          {[...Array(5)].map((_, i) => (
+            <FaStar key={i} color={i < Math.floor(products.rating) ? "gold" : "lightgray"} />))}
+            ({products.rating}/5)</span>
       </div>
       <div className="flex gap-5">
         <span className="text-sm">Grey Stainfold</span>
         <span className="text-sm text-gray-500">|  14 May 2021</span>
       </div>
-        <span><FaStar className="text-yellow-500 my-5"/></span>
+        <span className="flex space-x-2 my-3">{[...Array(5)].map((_, i) => (
+            <FaStar key={i} color={i < Math.floor(products.rating) ? "gold" : "lightgray"} />))}</span>
         <p className="text-md">{products.review}</p>
         <button className="bg-[#59F151] p-2 px-5 my-3 text-sm cursor-pointer">Write Review</button>
       <hr className="w-3/4 my-10"/>
         <span className="text-base md:text-xl font-bold">SIMILAR</span>
         <Card limit={3} addToCart={addToCart}/>
     </div>
+    <Footer/>
   </div>
   )
 }

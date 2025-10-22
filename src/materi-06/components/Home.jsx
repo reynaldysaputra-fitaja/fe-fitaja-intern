@@ -13,6 +13,8 @@ import { AiOutlineCreditCard } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { animate, backOut, stagger } from "motion/react";
+import Navigasi from "./Navigasi"
+import Footer from "./Footer"
 
 function Point({icon, title, desc}) {
   return (
@@ -36,7 +38,6 @@ export default function Home() {
     );
   }, []);
 
-
   const handleClick = () => {
     navigate("/materi-06/product");
     window.scrollTo(0, 0);
@@ -44,6 +45,7 @@ export default function Home() {
   
   return (
     <div>
+      <Navigasi/>
       <div className="animasi">
       <div className="flex flex-row bg-black h-90 lg:h-160">
         <div className="text-white items-center my-auto mx-10 md:mr-80 md:ml-10 lg:mr-150">
@@ -113,6 +115,7 @@ export default function Home() {
         </div>
       </div>
       </div>
+      <Footer/>
     </div>
   )
 }

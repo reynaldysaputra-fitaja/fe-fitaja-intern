@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Card from "./Card";
+import Navigasi from "./Navigasi"
+import Footer from "./Footer"
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { useEffect } from "react";
 import { animate, backOut, stagger } from "motion/react";
@@ -18,6 +20,7 @@ export default function ListProduct() {
 
   return (
     <div>
+      <Navigasi/>
       <div className="animasi">
         <div className="p-10">
         <nav className="mb-10">
@@ -41,6 +44,7 @@ export default function ListProduct() {
         <Card showSearch={true}/>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }
