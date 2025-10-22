@@ -1,6 +1,4 @@
-import Navigasi from "./Navigasi";
 import Card from "./Card";
-import Footer from "./Footer";
 import sepatuHome from "../assets/sepatu-home.png"
 import textHome from "../assets/text-home.png"
 import glowInTheDark from "../assets/glow-in-the-dark.jpg"
@@ -15,6 +13,8 @@ import { AiOutlineCreditCard } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { animate, backOut, stagger } from "motion/react";
+import Navigasi from "./Navigasi"
+import Footer from "./Footer"
 
 function Point({icon, title, desc}) {
   return (
@@ -38,9 +38,8 @@ export default function Home() {
     );
   }, []);
 
-
   const handleClick = () => {
-    navigate("/materi-06/listproduct");
+    navigate("/materi-06/product");
     window.scrollTo(0, 0);
   };
   
@@ -51,13 +50,13 @@ export default function Home() {
       <div className="flex flex-row bg-black h-90 lg:h-160">
         <div className="text-white items-center my-auto mx-10 md:mr-80 md:ml-10 lg:mr-150">
           <div className="font-semibold mb-3 lg:mb-5 text-sm md:text-base lg:text-xl">Aerostreet Best Collections 2021</div>
-          <h1 className="text-2xl lg:text-4xl font-bold mb-5 md:mb-8 lg:mb-10">INTERNASIONAL SPACE STATION (ISS)</h1>
+          <h1 className="text-base lg:text-4xl font-bold mb-5 md:mb-8 lg:mb-10">INTERNASIONAL SPACE STATION (ISS)</h1>
           <p className="text-sm md:text-base lg:text-xl">Every day is a good day when you’re floating. 
             Your whole life your spend walking around Earth 
             and then all of a sudden you get to fly like you’ve dreamed of.</p>
           <div className="my-5 lg:my-10 mr-15 lg:mr-0">
-            <button className="bg-[#59F151] w-25 p-2 text-sm text-black mr-5 lg:mr-10 mb-5">Shop Now</button><br className="block md:hidden"/>
-            <button className="border-1 border-[#59F151] w-25 p-2 text-sm">Explore</button>
+            <button className="bg-[#59F151] w-25 p-2 text-sm text-black mr-5 lg:mr-10 mb-5 cursor-pointer">Shop Now</button><br className="block md:hidden"/>
+            <button className="border-1 border-[#59F151] w-25 p-2 text-sm cursor-pointer">Explore</button>
           </div>
         </div>
         <div className="absolute w-50 top-60 md:top-20 md:w-85 lg:w-150 right-0">
@@ -69,7 +68,7 @@ export default function Home() {
       <div className="flex flex-col m-5 lg:m-15">
         <span className="font-bold text-base md:text-xl lg:text-3xl mb-3">NEW ARRIVAL</span>
         <Card limit={6}/>
-        <button className="bg-[#59F151] w-20 p-2 my-3 text-sm"
+        <button className="bg-[#59F151] w-20 p-2 my-3 text-sm cursor-pointer"
         onClick={handleClick}>See All</button>
       </div>
 
@@ -115,9 +114,8 @@ export default function Home() {
           <img className="w-15 lg:w-20" src={aura}></img>
         </div>
       </div>
-
-      <Footer />
       </div>
+      <Footer/>
     </div>
   )
 }

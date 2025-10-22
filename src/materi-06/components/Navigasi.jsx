@@ -9,6 +9,7 @@ import { logout } from "../state/authSlice";
 export default function Navigasi() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const items = useSelector((state) => state.cart.items);
   const [navMobile, setNavMobile] = useState(false);
   const [profile, setProfile] = useState(false);
   const { isLogin, user } = useSelector((state) => state.auth);
@@ -27,10 +28,10 @@ export default function Navigasi() {
         {navMobile && (
           <div className="absolute bg-black/50 top-13 flex items-center justify-center">
             <ul className="flex flex-col gap-5 bg-white font-bold pl-5 pr-25 py-5">
-              <li onClick={() => navigate("/materi-06/home")}>HOME</li>
-              <li onClick={() => navigate("/materi-06/listproduct")}>PRODUCTS</li>
-              <li>COLLABORATION</li>
-              <li>CONTACT US</li>
+              <li className="cursor-pointer" onClick={() => navigate("/materi-06/home")}>HOME</li>
+              <li className="cursor-pointer" onClick={() => navigate("/materi-06/product")}>PRODUCTS</li>
+              <li className="cursor-pointer">COLLABORATION</li>
+              <li className="cursor-pointer">CONTACT US</li>
             </ul>
         </div>
         )}
@@ -38,21 +39,21 @@ export default function Navigasi() {
         <img className="w-8 md:w-10 ml-3 mr-0 md:ml-8 md:my-5" src={logoImg}></img>
         <div className="hidden md:block">
             <ul className="flex flex-row gap-5 font-bold md:text-sm lg:text-base">
-              <li onClick={() => navigate("/materi-06/home")}>HOME</li>
-              <li onClick={() => navigate("/materi-06/listproduct")}>PRODUCTS</li>
-              <li>COLLABORATION</li>
-              <li>CONTACT US</li>
+              <li className="cursor-pointer" onClick={() => navigate("/materi-06/home")}>HOME</li>
+              <li className="cursor-pointer" onClick={() => navigate("/materi-06/product")}>PRODUCTS</li>
+              <li className="cursor-pointer">COLLABORATION</li>
+              <li className="cursor-pointer">CONTACT US</li>
             </ul>
         </div>
         </div>
         <div className="flex flex-row gap-3 lg:gap-7 items-center mx-5 text-2xl">
-          <div className="relative">
-            <FaCartArrowDown />
+          <div className="relative cursor-pointer">
+            <FaCartArrowDown onClick={() => navigate("/materi-06/cart")}/>
             <span className="absolute -top-2 -right-2 bg-[#59F151] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-              0
+              {items.length}
             </span>
           </div>
-          <div className="relative">
+          <div className="relative cursor-pointer">
             <AiOutlineHeart />
             <span className="absolute -top-2 -right-2 bg-[#59F151] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
               0
@@ -64,7 +65,7 @@ export default function Navigasi() {
                 {user?.email || <AiOutlineUser/>}
             </button>
             ) : (
-            <button className="bg-black/80 text-white text-sm lg:text-base font-semibold p-2 px-5 m-2" 
+            <button className="bg-black/80 text-white text-sm lg:text-base font-semibold p-2 px-5 m-2 cursor-pointer" 
             onClick={() => navigate("/materi-06/login")}>Login</button>)
             }
 

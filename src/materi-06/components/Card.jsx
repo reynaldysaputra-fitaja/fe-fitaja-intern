@@ -1,26 +1,19 @@
-import earthAngelHitam from "../assets/earth-angel-hitam.png";
-import scooterHitam from "../assets/scooter-hitam.png";
-import fallenAngelHitam from "../assets/fallen-angel-hitam.png"
-import crewneckLokkoBlack from "../assets/crewneck-lokko-black.jpg"
-import streetwearSkate from "../assets/streetwear-skate-black.jpg"
-import fontUrbanBlack from "../assets/font-urban-black.jpg"
-import shirtLokkoBlack from "../assets/shirt-lokko-black.jpg"
-import yunaniAngelBlack from "../assets/yunani-angel-black.jpg"
-import hoodieAlexanderBlack from "../assets/hoodie-alexander-black.jpg"
-import roseNaturalGreen from "../assets/rose-Natural-Green.jpg"
-import rinGreyTosca from "../assets/rin-Grey-Tosca.jpg"
-import cutSilver from "../assets/cut-Silver.jpg"
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { AiOutlineHeart } from "react-icons/ai";
+import { products } from "../data";
 
 function Item({ products }) {
-
-  const handleClick = () => {
-    console.log("Product:", products);
-  };
-
+  const navigate = useNavigate();
+  const handleClick =
+    () => {navigate(`/materi-06/product/${products.id}`, { state: products });
+    window.scrollTo(0, 0);
+  }
+  
   return (
-    <div className="flex flex-col mb-5 shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300" onClick={handleClick}>
+    <div className="flex flex-col p-10 hover:shadow-xl hover:-translate-y-2 transition duration-300 cursor-pointer" 
+      onClick={handleClick}>
       {products.discount > 0 && (
         <div className="absolute bg-red-500 text-white font-bold text-xs px-2 py-4 rounded-full self-end mb-2">
           -{products.discount}%
@@ -34,7 +27,10 @@ function Item({ products }) {
       />
 
       <span className="text-base font-bold mb-1">{products.category}</span>
+      <div className="flex flex-row justify-between">
       <span className="text-sm mb-2">{products.name}</span>
+      <AiOutlineHeart className="text-xl"/>
+      </div>
 
       {products.discount > 0 ? (
         <div className="flex justify-between gap-3">
@@ -53,121 +49,11 @@ export default function Card({limit, showSearch = false}) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1500); // 1.5 detik
+    const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
-  const products = [
-    {
-      id: 1,
-      image: earthAngelHitam,
-      category: "T SHIRT OVERSIZE",
-      name: "Earth Angel Hitam",
-      price: "Rp 119.800",
-      discount: 50,
-      discountprice: "Rp 59.900",
-    },
-    {
-      id: 2,
-      image: scooterHitam,
-      category: "COACH JACKET",
-      name: "Scooter Hitam",
-      price: "Rp 299.800",
-      discount: 50,
-      discountprice: "Rp 149.900",
-    },
-    {
-      id: 3,
-      image: fallenAngelHitam,
-      category: "T SHIRT",
-      name: "Fallen Angel Hitam",
-      price: "Rp 119.800",
-      discount: 0,
-      discountprice: null,
-    },
-    {
-      id: 4,
-      image: crewneckLokkoBlack,
-      category: "CREWNECK",
-      name: "Lokko Black",
-      price: "Rp 259.800",
-      discount: 50,
-      discountprice: "Rp 129.900",
-    },
-    {
-      id: 5,
-      image: streetwearSkate,
-      category: "T SHIRT",
-      name: "Streetwear Skate Black",
-      price: "Rp 119.800",
-      discount: 50,
-      discountprice: "Rp 59.900"
-    },
-    {
-      id: 6,
-      image: fontUrbanBlack,
-      category: "T SHIRT",
-      name: "Font Urban Black",
-      price: "Rp 119.800",
-      discount: 50,
-      discountprice: "Rp 59.900"    
-    },
-    {
-      id: 7,
-      image: shirtLokkoBlack,
-      category: "T SHIRT",
-      name: "Lokko Black",
-      price: "Rp 119.800",
-      discount: 50,
-      discountprice: "Rp 59.900" 
-    },
-    {
-      id: 8,
-      image: yunaniAngelBlack,
-      category: "T SHIRT",
-      name: "Yunani Angel Black",
-      price: "Rp 119.800",
-      discount: 50,
-      discountprice: "Rp 59.900"
-    },
-    {
-      id: 9,
-      image: hoodieAlexanderBlack,
-      category: "HOODIE",
-      name: "Alexander Black",
-      price: "Rp 279.800",
-      discount: 50,
-      discountprice: "Rp 139.900"
-    },
-    {
-      id: 10,
-      image: roseNaturalGreen,
-      category: "ROSE",
-      name: "Natural Green",
-      price: "Rp 259.800",
-      discount: 0,
-      discountprice: null
-    },
-    {
-      id: 11,
-      image: rinGreyTosca,
-      category: "RIN",
-      name: "Grey Tosca",
-      price: "Rp 259.800",
-      discount: 0,
-      discountprice: null
-    },
-    {
-      id: 12,
-      image: cutSilver,
-      category: "Space High",
-      name: "Cut Silver",
-      price: "Rp 259.800",
-      discount: 0,
-      discountprice: null
-    }
-  ];
-
+  
   const filtered = products.filter((p) =>
     p.name.toLowerCase().startsWith(search.toLowerCase())
   );

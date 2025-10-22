@@ -149,22 +149,22 @@ const AuthForm = ({ mode }) => {
             </>
             )}
 
-            <div className="flex gap-2"><input type="checkbox"/><span>Remember Me</span></div>
+            <div className="flex gap-2 cursor-pointer"><input type="checkbox"/><span>Remember Me</span></div>
            
             <button
             type="submit"
             disabled={password.length < 6 || (isRegister && confirmPass !== password)}
-            className="bg-[#59F151] py-2 mt-3 hover:bg-green-500 disabled:bg-gray-300 disabled:text-gray-800"
+            className="bg-[#59F151] py-2 mt-3 hover:bg-green-500 disabled:bg-gray-300 disabled:text-gray-800 cursor-pointer"
             >
             {isRegister ? "Register" : "Login"}
             </button>
         </form>
 
         {isRegister ?  (<div className="m-5">Already have an account? 
-        <span className="font-semibold text-green-500"
+        <span className="font-semibold text-green-500 cursor-pointer"
         onClick={() => navigate("/materi-06/login")}> Login here</span></div>) 
         : (<div className="m-5">Don't have an account? 
-          <span className="font-semibold text-green-500" 
+          <span className="font-semibold text-green-500 cursor-pointer" 
           onClick={() => navigate("/materi-06/register")}> Register here</span></div>)}
 
         {error && <p className="text-red-500 mt-3">{error}</p>}
