@@ -36,9 +36,10 @@ export const products = [
       discountprice: "Rp 149.900",
       desc: "Cozy fleece hoodie designed to keep you warm and comfortable. Perfect for lounging or outdoor activities.",
       sizes: ["S", "M", "L", "XL", "XXL"],
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
-    },
-    {
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 3.8,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
+    },    {
       id: 3,
       image: fallenAngelHitam,
       category: "T SHIRT",
@@ -48,7 +49,9 @@ export const products = [
       discountprice: "0",
       desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
       sizes: ["S", "M", "L", "XL", "XXL"],
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 3.5,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
     },
     {
       id: 4,
@@ -60,7 +63,9 @@ export const products = [
       discountprice: "Rp 129.900",
       desc: "Classic crewneck sweatshirt made from thick, soft cotton for a warm and comfy feel. Regular fit that’s great for everyday wear.",
       sizes: ["S", "M", "L", "XL", "XXL"],
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 4.2,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
     },
     {
       id: 5,
@@ -72,7 +77,9 @@ export const products = [
       discountprice: "Rp 59.900",
       desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
       sizes: ["S", "M", "L", "XL", "XXL"],
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 3.5,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
     },
     {
       id: 6,
@@ -84,8 +91,9 @@ export const products = [
       discountprice: "Rp 59.900",
       desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
       sizes: ["S", "M", "L", "XL", "XXL"]  ,
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
-
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 4.5,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
     },
     {
       id: 7,
@@ -97,8 +105,9 @@ export const products = [
       discountprice: "Rp 59.900",
       desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
       sizes: ["S", "M", "L", "XL", "XXL"] ,
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
-
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 4.7,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
     },
     {
       id: 8,
@@ -110,8 +119,9 @@ export const products = [
       discountprice: "Rp 59.900",
       desc: "Oversized T-shirt made from premium cotton that feels soft and lightweight, providing maximum comfort all day long.",
       sizes: ["S", "M", "L", "XL", "XXL"],
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
-
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 3.9,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
     },
     {
       id: 9,
@@ -123,8 +133,9 @@ export const products = [
       discountprice: "Rp 139.900",
       desc: "Cozy fleece hoodie designed to keep you warm and comfortable. Perfect for lounging or outdoor activities.",
       sizes: ["S", "M", "L", "XL", "XXL"],
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
-
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 4.5,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
     },
     {
       id: 10,
@@ -136,9 +147,10 @@ export const products = [
       discountprice: null,
       desc: "Guaranteed not to be damaged easily because it is produced with the latest Shoes Injection Mold technology.",
       sizes: [37, 38, 39, 40, 41, 42, 43, 44],
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
-    },
-    {
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 4.5,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
+    },    {
       id: 11,
       image: rinGreyTosca,
       category: "RIN",
@@ -148,7 +160,10 @@ export const products = [
       discountprice: null,
       desc: "Guaranteed not to be damaged easily because it is produced with the latest Shoes Injection Mold technology.",
       sizes: [37, 38, 39, 40, 41, 42, 43, 44],
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 4.5,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
+  
     },
     {
       id: 12,
@@ -160,7 +175,8 @@ export const products = [
       discountprice: null,
       desc: "Guaranteed not to be damaged easily because it is produced with the latest Shoes Injection Mold technology.",
       sizes: [37, 38, 39, 40, 41, 42, 43, 44],
-      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"]
-
+      spec: ["Regular fit", "Upper dengan konstruksi mesh", "Outsole berbahan kulit sintesis", "Menggunakan tali sepatu", "Free 1 pair Insole by Aerostreet"],
+      rating: 3.8,
+      review: "The silver aerostreet is cool and arrived intact and flawless. And also the choice of silver color is very classic. Awesome!!"
     }
   ];
