@@ -6,9 +6,10 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../state/authSlice";
 
-export default function Navigasi({cartCount}) {
+export default function Navigasi() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const items = useSelector((state) => state.cart.items);
   const [navMobile, setNavMobile] = useState(false);
   const [profile, setProfile] = useState(false);
   const { isLogin, user } = useSelector((state) => state.auth);
@@ -49,7 +50,7 @@ export default function Navigasi({cartCount}) {
           <div className="relative cursor-pointer">
             <FaCartArrowDown onClick={() => navigate("/materi-06/cart")}/>
             <span className="absolute -top-2 -right-2 bg-[#59F151] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-              {cartCount}
+              {items.length}
             </span>
           </div>
           <div className="relative cursor-pointer">
