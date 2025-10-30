@@ -10,6 +10,7 @@ export default function Navigasi() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
+  const itemSaved = useSelector((state) => state.savedProduct.itemSaved);
   const [navMobile, setNavMobile] = useState(false);
   const [profile, setProfile] = useState(false);
   const { isLogin, user } = useSelector((state) => state.auth);
@@ -54,9 +55,9 @@ export default function Navigasi() {
             </span>
           </div>
           <div className="relative cursor-pointer">
-            <AiOutlineHeart />
+            <AiOutlineHeart onClick={() => navigate("/materi-06/saved-product")}/>
             <span className="absolute -top-2 -right-2 bg-[#59F151] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-              0
+              {itemSaved.length}
             </span>
           </div>
             {isLogin ? 

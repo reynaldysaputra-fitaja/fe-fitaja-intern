@@ -8,14 +8,31 @@ import { useEffect } from "react";
 import { animate, easeInOut, stagger } from "motion/react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../state/cartSlice";
+import { addToSave, removeFromSave } from "../state/saveProductSlice";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 export default function DetailProduct() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const products = location.state;
+  const products = location.state || {};
   const [showPopupAdd, setShowPopupAdd] = useState(false);
-  const [showPopupSave, setShowPopupSave] = useState(false);
   const [selectedSize, setSelectedSize] = useState();
+  const itemSaved = useSelector((state) => state.savedProduct.itemSaved);
+  const isSaved = itemSaved.some(item => item.id === products.id);
+
+  const handleSave = () => {
+  if (isSaved) {
+    const confirmDelete = window.confirm("Do you want to remove from the wishlist?");
+    if (confirmDelete) {
+      dispatch(removeFromSave({ id: products.id }));
+      toast.info("Product removed from saved list.");
+    }
+  } else {
+    dispatch(addToSave(products));
+    toast.success("Product saved!");
+  }
+};
 
   const handleAdd = () => {
     if (!selectedSize) {
@@ -29,11 +46,6 @@ export default function DetailProduct() {
     }
     dispatch(addToCart({...products, size:selectedSize}));
     setTimeout(() => {setShowPopupAdd(false);}, 2000);
-  }
-
-  const handleSave = () => {
-    setShowPopupSave(true);
-    setTimeout(() => {setShowPopupSave(false);}, 2000);
   }
 
   useEffect(() => {
@@ -77,8 +89,11 @@ export default function DetailProduct() {
           </div>
           <button className="cursor-pointer bg-[#59F151] hover:bg-green-400 p-2 my-3"
           onClick={handleAdd}>Add to Cart</button>
-          <button className="cursor-pointer border-2 border-[#59F151] hover:bg-green-400 hover:border-green-400 p-2"
-          onClick={handleSave}>Save Product</button>
+          <button className={`cursor-pointer border-2 border-[#59F151] hover:bg-green-400 hover:border-green-400 p-2
+            ${ isSaved ? "bg-[#59F151]" : "" }`}
+          onClick={handleSave}>
+            {isSaved ? "Saved" : "Save Product"}
+          </button>
           <div className="flex gap-1 my-3 items-center">
             <button className="cursor-pointer font-bold mr-2">Share</button>
             <button className="cursor-pointer"><FaTwitter/></button>
@@ -90,14 +105,6 @@ export default function DetailProduct() {
               <div className="bg-gray-500/50 max-w-md rounded-xl text-center text-white">
                 <FaCheckCircle className=" text-3xl m-auto mt-10"/>
                 <h3 className="m-5">Product added to cart!</h3>
-              </div>
-            </div>
-          )}
-          {showPopupSave && (
-            <div className="fixed inset-0 flex items-center justify-center">
-              <div className="bg-gray-500/50 max-w-md rounded-xl text-center text-white">
-                <FaCheckCircle className=" text-3xl m-auto mt-10"/>
-                <h3 className="m-5">Product saved successfully!</h3>
               </div>
             </div>
           )}

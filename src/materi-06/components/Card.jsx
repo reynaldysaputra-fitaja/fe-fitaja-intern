@@ -1,48 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { AiOutlineHeart } from "react-icons/ai";
 import { products } from "../data";
-
-function Item({ products }) {
-  const navigate = useNavigate();
-  const handleClick =
-    () => {navigate(`/materi-06/product/${products.id}`, { state: products });
-    window.scrollTo(0, 0);
-  }
-  
-  return (
-    <div className="flex flex-col p-10 hover:shadow-xl hover:-translate-y-2 transition duration-300 cursor-pointer" 
-      onClick={handleClick}>
-      {products.discount > 0 && (
-        <div className="absolute bg-red-500 text-white font-bold text-xs px-2 py-4 rounded-full self-end mb-2">
-          -{products.discount}%
-        </div>
-      )}
-
-      <img
-        className="w-80 h-60 object-cover mb-3 rounded-lg"
-        src={products.image}
-        alt={products.name}
-      />
-
-      <span className="text-base font-bold mb-1">{products.category}</span>
-      <div className="flex flex-row justify-between">
-      <span className="text-sm mb-2">{products.name}</span>
-      <AiOutlineHeart className="text-xl"/>
-      </div>
-
-      {products.discount > 0 ? (
-        <div className="flex justify-between gap-3">
-          <span className="line-through">{products.price}</span>
-          <span className="text-red-500 font-bold">{products.discountprice}</span>
-        </div>
-      ) : (
-        <span className="text-black">{products.price}</span>
-      )}
-    </div>
-  );
-}
+import Item from "./Item"
 
 export default function Card({limit, showSearch = false}) {
   const [search, setSearch] = useState("");
@@ -52,7 +11,6 @@ export default function Card({limit, showSearch = false}) {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
-
   
   const filtered = products.filter((p) =>
     p.name.toLowerCase().startsWith(search.toLowerCase())
