@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import ListProduct from "./components/ListProduct";
 import DetailProduct from "./components/DetailProduct";
 import CartPage from "./components/CartPage";
+import SaveProduct from "./components/SaveProduct";
 
 export default function Materi06() {
   
@@ -17,6 +18,7 @@ export default function Materi06() {
         <Route path="/product" element={<ListProduct />} />
         <Route path="/product/:id" element={<DetailProduct />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/saved-product" element={<SaveProduct />} />
       </Routes>
   );
 }
